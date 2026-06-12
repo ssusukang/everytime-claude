@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everytime Design System</title>
+<style>
+:root {
+  --gray0: #ffffff;
+  --gray100: #f9f9f9;
+  --gray200: #f2f2f2;
+  --gray300: #ededed;
+  --gray400: #d6d6d6;
+  --gray500: #a6a6a6;
+  --gray600: #737373;
+  --gray700: #444444;
+  --gray800: #292929;
+  --red100: #fff3f3;
+  --red200: #ffe6e6;
+  --red600: #f94848;
+  --red700: #f91f15;
+  --cyan100: #edfffe;
+  --cyan700: #05bcbc;
+  --yellow100: #fffbeb;
+  --yellow700: #ffc900;
+  --orange700: #ff8f0b;
+  --green700: #2bcf0e;
+  --blue700: #0397ea;
+  --blue900: #056ab5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  background: var(--gray100);
+  color: var(--gray800);
+  line-height: 1.5;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--gray0);
+  border-bottom: 1px solid var(--gray200);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  z-index: 100;
+  gap: 48px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--gray800);
+}
+.nav-logo svg { flex-shrink: 0; }
+.nav-tabs {
+  display: flex;
+  gap: 8px;
+}
+.nav-tab {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray600);
+  text-decoration: none;
+  border-radius: 99px;
+  transition: all 0.15s;
+}
+.nav-tab:hover { background: var(--gray100); color: var(--gray800); }
+.nav-tab.active { background: var(--gray800); color: var(--gray0); }
+
+/* Main Layout */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 88px 32px 64px;
+}
+
+/* Section */
+section {
+  background: var(--gray0);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 24px;
+  display: none;
+}
+section.active { display: block; }
+section h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+section .subtitle {
+  font-size: 15px;
+  color: var(--gray600);
+  margin-bottom: 40px;
+}
+section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 40px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray200);
+}
+section h2:first-of-type { margin-top: 0; }
+section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray600);
+  margin: 28px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.type-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.type-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 140px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray100);
+  gap: 24px;
+}
+.type-row:last-child { border-bottom: none; }
+.type-token {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.type-token-name {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "SF Mono", Monaco, monospace;
+  color: var(--gray700);
+}
+.type-token-meta {
+  font-size: 12px;
+  color: var(--gray500);
+}
+.type-preview {
+  color: var(--gray800);
+}
+.type-specs {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--gray500);
+}
+.type-spec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.type-spec-value {
+  font-weight: 600;
+  color: var(--gray700);
+  font-family: "SF Mono", Monaco, monospace;
+}
+
+/* Platform Tabs */
+.platform-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.platform-tab {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 99px;
+  cursor: pointer;
+  background: var(--gray100);
+  color: var(--gray600);
+  transition: all 0.15s;
+}
+.platform-tab:hover { background: var(--gray200); }
+.platform-tab.active { background: var(--gray800); color: var(--gray0); }
+
+.type-platform { display: none; }
+.type-platform.active { display: block; }
+
+.color-theme { display: none; }
+.color-theme.active { display: block; }
+
+/* ========== COLOR ========== */
+.color-section {
+  margin-bottom: 40px;
+}
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+}
+.color-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.color-swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.color-info {
+  text-align: center;
+}
+.color-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray700);
+}
+.color-hex {
+  font-size: 11px;
+  font-family: "SF Mono", Monaco, monospace;
+  color: var(--gray500);
+}
+
+/* Timetable Colors */
+.timetable-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.timetable-chip {
+  padding: 10px 20px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+.timetable-chip.light-text { color: var(--gray800); }
+
+/* Exception Colors Table */
+.exception-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.exception-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--gray100);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.exception-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gray100);
+  vertical-align: middle;
+}
+.exception-table .token {
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 12px;
+  color: var(--gray700);
+}
+.exception-table .value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.exception-table .swatch-mini {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+.exception-table code {
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 11px;
+  background: var(--gray100);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ========== LOGO ========== */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.logo-card {
+  background: var(--gray100);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.logo-card.dark {
+  background: var(--gray800);
+}
+.logo-card svg {
+  max-width: 160px;
+  height: auto;
+}
+.logo-card-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray600);
+}
+.logo-card.dark .logo-card-label {
+  color: var(--gray400);
+}
+
+.logo-structure {
+  background: var(--gray100);
+  border-radius: 12px;
+  padding: 24px;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--gray700);
+}
+.logo-structure .comment { color: var(--gray500); }
+
+.logo-color-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 16px;
+}
+.logo-color-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--gray100);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray500);
+  text-transform: uppercase;
+}
+.logo-color-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gray100);
+}
+.logo-color-table .part {
+  font-weight: 600;
+  color: var(--gray700);
+}
+
+/* ========== ELEMENT COMPONENT ========== */
+.component-category {
+  margin-bottom: 40px;
+}
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.component-card {
+  background: var(--gray0);
+  border: 1px solid var(--gray200);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.15s;
+}
+.component-card:hover {
+  border-color: var(--gray400);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.component-preview {
+  background: var(--gray100);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+.component-info {
+  padding: 16px 20px;
+}
+.component-name {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "SF Mono", Monaco, monospace;
+  color: var(--gray800);
+  margin-bottom: 4px;
+}
+.component-desc {
+  font-size: 13px;
+  color: var(--gray600);
+}
+
+/* Live Component Styles */
+.demo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--gray200);
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray700);
+}
+.demo-chip.active {
+  background: var(--gray800);
+  color: var(--gray0);
+}
+.demo-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gray400);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.demo-checkbox.checked {
+  background: var(--red700);
+  border-color: var(--red700);
+}
+.demo-checkbox.checked::after {
+  content: "";
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+.demo-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gray400);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.demo-radio.checked {
+  border-color: var(--red700);
+}
+.demo-radio.checked::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--red700);
+  border-radius: 50%;
+}
+.demo-toggle {
+  width: 51px;
+  height: 31px;
+  background: var(--gray300);
+  border-radius: 99px;
+  position: relative;
+  transition: background 0.2s;
+}
+.demo-toggle.on {
+  background: var(--red700);
+}
+.demo-toggle::after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: left 0.2s;
+}
+.demo-toggle.on::after {
+  left: 22px;
+}
+.demo-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--gray200);
+}
+.demo-divider.thick {
+  height: 8px;
+  background: var(--gray100);
+}
+.demo-badge {
+  display: inline-flex;
+  padding: 4px 8px;
+  background: var(--red200);
+  color: var(--red700);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.demo-badge.best {
+  background: var(--red200);
+  color: var(--red600);
+}
+.demo-input {
+  width: 200px;
+  padding: 12px 16px;
+  border: 1px solid var(--gray300);
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--gray800);
+  background: var(--gray0);
+}
+.demo-input::placeholder {
+  color: var(--gray500);
+}
+.demo-input:focus {
+  outline: none;
+  border-color: var(--red700);
+}
+.demo-search {
+  width: 240px;
+  padding: 10px 16px 10px 40px;
+  border: none;
+  border-radius: 99px;
+  background: var(--gray200);
+  font-size: 15px;
+  position: relative;
+}
+.demo-search-wrap {
+  position: relative;
+}
+.demo-search-wrap::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--gray500);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.demo-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.demo-btn.primary {
+  background: var(--red700);
+  color: white;
+}
+.demo-btn.secondary {
+  background: var(--gray200);
+  color: var(--gray700);
+}
+.demo-cta {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px 24px;
+  background: var(--red700);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.demo-handlebar {
+  width: 36px;
+  height: 5px;
+  background: var(--gray300);
+  border-radius: 99px;
+}
+.demo-tab-group {
+  display: flex;
+  gap: 0;
+  background: var(--gray200);
+  padding: 4px;
+  border-radius: 10px;
+}
+.demo-tab {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray600);
+  border-radius: 8px;
+}
+.demo-tab.active {
+  background: var(--gray0);
+  color: var(--gray800);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.demo-tooltip {
+  position: relative;
+  background: var(--gray800);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.demo-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--gray800);
+  border-bottom: none;
+}
+.demo-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--gray0);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 260px;
+}
+.demo-list-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--gray300);
+  border-radius: 50%;
+}
+.demo-list-content {
+  flex: 1;
+}
+.demo-list-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray800);
+}
+.demo-list-sub {
+  font-size: 13px;
+  color: var(--gray500);
+}
+.demo-icon {
+  width: 24px;
+  height: 24px;
+  background: var(--gray600);
+}
+.demo-icon.heart {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.demo-icon.comment {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M21 6h-2V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2v3c0 .85 1.03 1.28 1.63.68L10.26 16H18a1 1 0 0 0 1-1V9h2a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M21 6h-2V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2v3c0 .85 1.03 1.28 1.63.68L10.26 16H18a1 1 0 0 0 1-1V9h2a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.demo-icon.more {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Ccircle cx='12' cy='5' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='12' cy='19' r='2'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Ccircle cx='12' cy='5' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='12' cy='19' r='2'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Featured Section */
+.featured-domain {
+  margin-bottom: 32px;
+}
+.featured-domain h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray800);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.featured-domain h4::before {
+  content: "";
+  width: 4px;
+  height: 16px;
+  background: var(--red700);
+  border-radius: 2px;
+}
+.featured-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.featured-chip {
+  padding: 6px 12px;
+  background: var(--gray100);
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: "SF Mono", Monaco, monospace;
+  color: var(--gray700);
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 768 768" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="620" cy="206" r="74" fill="#292929"/>
+      <path d="M755.467 376H621.603C621.603 508.089 515.198 616.262 383.967 616.262C252.735 616.262 146.364 508.089 146.364 376H12.5C12.5 582.518 178.822 751 384 751C589.178 751 755.5 582.518 755.5 376H755.467Z" fill="#292929"/>
+      <g transform="translate(328.5, 265)">
+        <path d="M103.291 61H0.5L28.1669 187.361C30.9369 200.287 41.9169 209 55.5 209C69.0831 209 80.0631 200.319 82.8331 187.361L110.5 61H103.291Z" fill="url(#nav-nose-gradient)"/>
+        <circle cx="55.5" cy="55.5" r="55.5" fill="#F91F15"/>
+      </g>
+      <defs>
+        <linearGradient id="nav-nose-gradient" x1="55.5" y1="61" x2="55.5" y2="209" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#BC0017"/><stop offset="0.47" stop-color="#F91F15"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    Design System
+  </div>
+  <div class="nav-tabs">
+    <a href="#typography" class="nav-tab active" data-section="typography">Typography</a>
+    <a href="#color" class="nav-tab" data-section="color">Color</a>
+    <a href="#logo" class="nav-tab" data-section="logo">Logo</a>
+    <a href="#element" class="nav-tab" data-section="element">Element Component</a>
+  </div>
+</nav>
+
+<main>
+  <!-- ========== TYPOGRAPHY ========== -->
+  <section id="typography" class="active">
+    <h1>Typography</h1>
+    <p class="subtitle">시스템 폰트 Sans-serif 우선 (iOS: SF Pro / Android: Roboto) · Letter Spacing: 0</p>
+
+    <div class="platform-tabs">
+      <button class="platform-tab active" data-platform="ios">iOS</button>
+      <button class="platform-tab" data-platform="android">Android</button>
+      <button class="platform-tab" data-platform="web">Web</button>
+    </div>
+
+    <!-- iOS -->
+    <div class="type-platform active" data-platform="ios">
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Headline large</span>
+            <span class="type-token-meta">Bold only</span>
+          </div>
+          <div class="type-preview" style="font-size:22px;font-weight:700;line-height:30px">대학 커뮤니티 앱</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">22px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">30px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Headline small</span>
+            <span class="type-token-meta">Bold only</span>
+          </div>
+          <div class="type-preview" style="font-size:20px;font-weight:700;line-height:28px">섹션 헤딩</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">20px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">28px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Body large</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:17px;font-weight:700;line-height:24px">강조 본문 텍스트</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">17px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">24px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Body small</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:15px;font-weight:400;line-height:20px">닉네임, 댓글 본문</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">15px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">20px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Caption large</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:13px;font-weight:400;line-height:18px;color:#a6a6a6">06/12 09:15 · 시간, 메타 정보</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">13px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">18px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Caption small</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:11px;font-weight:500;line-height:15px;color:#737373">뱃지 텍스트</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">11px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">15px</span>L.H</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Android -->
+    <div class="type-platform" data-platform="android">
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Headline large</span>
+            <span class="type-token-meta">Bold only</span>
+          </div>
+          <div class="type-preview" style="font-size:22px;font-weight:700;line-height:32px">대학 커뮤니티 앱</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">22px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">32px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Headline small</span>
+            <span class="type-token-meta">Bold only</span>
+          </div>
+          <div class="type-preview" style="font-size:18px;font-weight:700;line-height:26px">섹션 헤딩</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">18px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">26px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Body large</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:16px;font-weight:700;line-height:23px">강조 본문 텍스트</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">16px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">23px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Body small</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:14px;font-weight:400;line-height:20px">닉네임, 댓글 본문</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">14px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">20px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Caption large</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:12px;font-weight:400;line-height:17px;color:#a6a6a6">06/12 09:15 · 시간, 메타 정보</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">12px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">17px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Caption small</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:10px;font-weight:500;line-height:15px;color:#737373">뱃지 텍스트</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">10px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">15px</span>L.H</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web -->
+    <div class="type-platform" data-platform="web">
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Headline large</span>
+            <span class="type-token-meta">Bold only</span>
+          </div>
+          <div class="type-preview" style="font-size:22px;font-weight:700;line-height:30px">대학 커뮤니티 앱</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">22px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">30px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Headline small</span>
+            <span class="type-token-meta">Bold only</span>
+          </div>
+          <div class="type-preview" style="font-size:18px;font-weight:700;line-height:26px">섹션 헤딩</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">18px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">26px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Body large</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:16px;font-weight:700;line-height:24px">강조 본문 텍스트</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">16px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">24px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Body small</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:14px;font-weight:400;line-height:20px">닉네임, 댓글 본문</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">14px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">20px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Caption large</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:12px;font-weight:400;line-height:18px;color:#a6a6a6">06/12 09:15 · 시간, 메타 정보</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">12px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">18px</span>L.H</div>
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-token">
+            <span class="type-token-name">Caption small</span>
+            <span class="type-token-meta">Bold / Regular</span>
+          </div>
+          <div class="type-preview" style="font-size:10px;font-weight:500;line-height:15px;color:#737373">뱃지 텍스트</div>
+          <div class="type-specs">
+            <div class="type-spec"><span class="type-spec-value">10px</span>Size</div>
+            <div class="type-spec"><span class="type-spec-value">15px</span>L.H</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COLOR ========== -->
+  <section id="color">
+    <h1>Color</h1>
+    <p class="subtitle">컬러 팔레트 · Figma 페이지 3468:120</p>
+
+    <div class="platform-tabs" style="margin-bottom:24px">
+      <button class="platform-tab active" data-theme="light">Light Mode</button>
+      <button class="platform-tab" data-theme="dark">Dark Mode</button>
+    </div>
+
+    <!-- Light Mode -->
+    <div class="color-theme active" data-theme="light">
+      <h2>Gray Scale</h2>
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#ffffff;border:1.5px solid #ededed"></div>
+          <div class="color-info"><div class="color-name">Gray0</div><div class="color-hex">#ffffff</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#f9f9f9"></div>
+          <div class="color-info"><div class="color-name">Gray100</div><div class="color-hex">#f9f9f9</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#f2f2f2"></div>
+          <div class="color-info"><div class="color-name">Gray200</div><div class="color-hex">#f2f2f2</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#ededed"></div>
+          <div class="color-info"><div class="color-name">Gray300</div><div class="color-hex">#ededed</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#d6d6d6"></div>
+          <div class="color-info"><div class="color-name">Gray400</div><div class="color-hex">#d6d6d6</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#a6a6a6"></div>
+          <div class="color-info"><div class="color-name">Gray500</div><div class="color-hex">#a6a6a6</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#737373"></div>
+          <div class="color-info"><div class="color-name">Gray600</div><div class="color-hex">#737373</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#444444"></div>
+          <div class="color-info"><div class="color-name">Gray700</div><div class="color-hex">#444444</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#292929"></div>
+          <div class="color-info"><div class="color-name">Gray800</div><div class="color-hex">#292929</div></div>
+        </div>
+      </div>
+
+    <h2>Red</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#fff3f3"></div>
+        <div class="color-info"><div class="color-name">Red100</div><div class="color-hex">#fff3f3</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#ffe6e6"></div>
+        <div class="color-info"><div class="color-name">Red200</div><div class="color-hex">#ffe6e6</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#f94848"></div>
+        <div class="color-info"><div class="color-name">Red600</div><div class="color-hex">#f94848</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#f91f15"></div>
+        <div class="color-info"><div class="color-name">Red700</div><div class="color-hex">#f91f15</div></div>
+      </div>
+    </div>
+
+    <h2>Semantic</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#edfffe"></div>
+        <div class="color-info"><div class="color-name">Cyan100</div><div class="color-hex">#edfffe</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#05bcbc"></div>
+        <div class="color-info"><div class="color-name">Cyan700</div><div class="color-hex">#05bcbc</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#fffbeb"></div>
+        <div class="color-info"><div class="color-name">Yellow100</div><div class="color-hex">#fffbeb</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#ffc900"></div>
+        <div class="color-info"><div class="color-name">Yellow700</div><div class="color-hex">#ffc900</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#ff8f0b"></div>
+        <div class="color-info"><div class="color-name">Orange700</div><div class="color-hex">#ff8f0b</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#2bcf0e"></div>
+        <div class="color-info"><div class="color-name">Green700</div><div class="color-hex">#2bcf0e</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#0397ea"></div>
+        <div class="color-info"><div class="color-name">Blue700</div><div class="color-hex">#0397ea</div></div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#056ab5"></div>
+        <div class="color-info"><div class="color-name">Blue900</div><div class="color-hex">#056ab5</div></div>
+      </div>
+    </div>
+
+    <h2>Timetable</h2>
+    <div class="timetable-grid">
+      <div class="timetable-chip" style="background:#fd806d">Timetable 1</div>
+      <div class="timetable-chip light-text" style="background:#facd69">Timetable 2</div>
+      <div class="timetable-chip light-text" style="background:#afd276">Timetable 3</div>
+      <div class="timetable-chip light-text" style="background:#8ad6d7">Timetable 4</div>
+      <div class="timetable-chip" style="background:#76a8f6">Timetable 5</div>
+      <div class="timetable-chip light-text" style="background:#fbaa68">Timetable 6</div>
+      <div class="timetable-chip" style="background:#a588f5">Timetable 7</div>
+      <div class="timetable-chip light-text" style="background:#89dd9a">Timetable 8</div>
+      <div class="timetable-chip" style="background:#8886e1">Timetable 9</div>
+    </div>
+
+    <h2>Exception (Semantic Surface)</h2>
+    <table class="exception-table">
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token">BG_Page</td>
+          <td class="value"><div class="swatch-mini" style="background:#f6f6f6"></div><code>#f6f6f6</code></td>
+          <td>페이지 배경</td>
+        </tr>
+        <tr>
+          <td class="token">BG_Page_Card</td>
+          <td class="value"><div class="swatch-mini" style="background:#ffffff"></div><code>#ffffff</code></td>
+          <td>페이지 카드 배경</td>
+        </tr>
+        <tr>
+          <td class="token">BG_Sheet</td>
+          <td class="value"><div class="swatch-mini" style="background:#ffffff"></div><code>#ffffff</code></td>
+          <td>바텀시트 배경</td>
+        </tr>
+        <tr>
+          <td class="token">BG_Border</td>
+          <td class="value"><div class="swatch-mini" style="background:#f1f1f1"></div><code>#f1f1f1</code></td>
+          <td>보더 컬러</td>
+        </tr>
+        <tr>
+          <td class="token">Image Stroke</td>
+          <td class="value"><div class="swatch-mini" style="background:rgba(214,214,214,0.2);border:1px solid #ddd"></div><code>rgba(214,214,214,0.2)</code></td>
+          <td>이미지/아바타 테두리</td>
+        </tr>
+        <tr>
+          <td class="token">Dim</td>
+          <td class="value"><div class="swatch-mini" style="background:rgba(0,0,0,0.2)"></div><code>rgba(0,0,0,0.2)</code></td>
+          <td>딤 오버레이</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- Dark Mode -->
+    <div class="color-theme" data-theme="dark">
+      <h2>Gray Scale</h2>
+      <div class="color-grid" style="background:#1a1a1a;padding:20px;border-radius:12px">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#000000;border:1.5px solid #333"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray0</div><div class="color-hex" style="color:#888">#000000</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#1a1a1a"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray100</div><div class="color-hex" style="color:#888">#1a1a1a</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#242424"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray200</div><div class="color-hex" style="color:#888">#242424</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#2e2e2e"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray300</div><div class="color-hex" style="color:#888">#2e2e2e</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#3d3d3d"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray400</div><div class="color-hex" style="color:#888">#3d3d3d</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#6b6b6b"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray500</div><div class="color-hex" style="color:#888">#6b6b6b</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#9a9a9a"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray600</div><div class="color-hex" style="color:#888">#9a9a9a</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#c4c4c4"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray700</div><div class="color-hex" style="color:#888">#c4c4c4</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#ffffff"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Gray800</div><div class="color-hex" style="color:#888">#ffffff</div></div>
+        </div>
+      </div>
+
+      <h2>Red</h2>
+      <div class="color-grid" style="background:#1a1a1a;padding:20px;border-radius:12px">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#3d1a1a"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Red100</div><div class="color-hex" style="color:#888">#3d1a1a</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#4d2020"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Red200</div><div class="color-hex" style="color:#888">#4d2020</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#f94848"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Red600</div><div class="color-hex" style="color:#888">#f94848</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#f91f15"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Red700</div><div class="color-hex" style="color:#888">#f91f15</div></div>
+        </div>
+      </div>
+
+      <h2>Semantic</h2>
+      <div class="color-grid" style="background:#1a1a1a;padding:20px;border-radius:12px">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#1a3d3d"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Cyan100</div><div class="color-hex" style="color:#888">#1a3d3d</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#05bcbc"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Cyan700</div><div class="color-hex" style="color:#888">#05bcbc</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#3d3520"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Yellow100</div><div class="color-hex" style="color:#888">#3d3520</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#ffc900"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Yellow700</div><div class="color-hex" style="color:#888">#ffc900</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#ff8f0b"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Orange700</div><div class="color-hex" style="color:#888">#ff8f0b</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#2bcf0e"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Green700</div><div class="color-hex" style="color:#888">#2bcf0e</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#0397ea"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Blue700</div><div class="color-hex" style="color:#888">#0397ea</div></div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#056ab5"></div>
+          <div class="color-info"><div class="color-name" style="color:#fff">Blue900</div><div class="color-hex" style="color:#888">#056ab5</div></div>
+        </div>
+      </div>
+
+      <h2>Timetable</h2>
+      <div class="timetable-grid" style="background:#1a1a1a;padding:20px;border-radius:12px">
+        <div class="timetable-chip" style="background:#fd806d">Timetable 1</div>
+        <div class="timetable-chip light-text" style="background:#facd69">Timetable 2</div>
+        <div class="timetable-chip light-text" style="background:#afd276">Timetable 3</div>
+        <div class="timetable-chip light-text" style="background:#8ad6d7">Timetable 4</div>
+        <div class="timetable-chip" style="background:#76a8f6">Timetable 5</div>
+        <div class="timetable-chip light-text" style="background:#fbaa68">Timetable 6</div>
+        <div class="timetable-chip" style="background:#a588f5">Timetable 7</div>
+        <div class="timetable-chip light-text" style="background:#89dd9a">Timetable 8</div>
+        <div class="timetable-chip" style="background:#8886e1">Timetable 9</div>
+      </div>
+
+      <h2>Exception (Semantic Surface)</h2>
+      <table class="exception-table" style="background:#1a1a1a;border-radius:12px">
+        <thead>
+          <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="token" style="color:#fff">BG_Page</td>
+            <td class="value"><div class="swatch-mini" style="background:#000000;border:1px solid #333"></div><code>#000000</code></td>
+            <td style="color:#9a9a9a">페이지 배경</td>
+          </tr>
+          <tr>
+            <td class="token" style="color:#fff">BG_Page_Card</td>
+            <td class="value"><div class="swatch-mini" style="background:#1a1a1a;border:1px solid #333"></div><code>#1a1a1a</code></td>
+            <td style="color:#9a9a9a">페이지 카드 배경</td>
+          </tr>
+          <tr>
+            <td class="token" style="color:#fff">BG_Sheet</td>
+            <td class="value"><div class="swatch-mini" style="background:#242424;border:1px solid #333"></div><code>#242424</code></td>
+            <td style="color:#9a9a9a">바텀시트 배경</td>
+          </tr>
+          <tr>
+            <td class="token" style="color:#fff">BG_Border</td>
+            <td class="value"><div class="swatch-mini" style="background:#2e2e2e;border:1px solid #333"></div><code>#2e2e2e</code></td>
+            <td style="color:#9a9a9a">보더 컬러</td>
+          </tr>
+          <tr>
+            <td class="token" style="color:#fff">Image Stroke</td>
+            <td class="value"><div class="swatch-mini" style="background:rgba(60,60,60,0.4);border:1px solid #333"></div><code>rgba(60,60,60,0.4)</code></td>
+            <td style="color:#9a9a9a">이미지/아바타 테두리</td>
+          </tr>
+          <tr>
+            <td class="token" style="color:#fff">Dim</td>
+            <td class="value"><div class="swatch-mini" style="background:rgba(0,0,0,0.6)"></div><code>rgba(0,0,0,0.6)</code></td>
+            <td style="color:#9a9a9a">딤 오버레이</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========== LOGO ========== -->
+  <section id="logo">
+    <h1>Logo</h1>
+    <p class="subtitle">EVERYTIME — 대학 커뮤니티 앱 브랜드 · Figma 페이지 906:207</p>
+
+    <h2>Icon Mark</h2>
+    <div class="logo-grid">
+      <div class="logo-card">
+        <svg width="140" height="140" viewBox="0 0 768 768" xmlns="http://www.w3.org/2000/svg">
+          <!-- eye: inset 17.19% 6.77% 63.54% 73.96% → x=52, y=132, w=148, h=148 -->
+          <circle cx="620" cy="206" r="74" fill="#292929"/>
+          <!-- mouth: inset 48.96% 1.63% 2.21% 1.63% → x=12.5, y=376, w=743, h=375 -->
+          <path d="M755.467 376H621.603C621.603 508.089 515.198 616.262 383.967 616.262C252.735 616.262 146.364 508.089 146.364 376H12.5C12.5 582.518 178.822 751 384 751C589.178 751 755.5 582.518 755.5 376H755.467Z" fill="#292929"/>
+          <!-- nose: inset 34.51% 42.77% 38.28% 42.77% → x=328.5, y=265, w=111, h=209 -->
+          <g transform="translate(328.5, 265)">
+            <path d="M103.291 61H0.5L28.1669 187.361C30.9369 200.287 41.9169 209 55.5 209C69.0831 209 80.0631 200.319 82.8331 187.361L110.5 61H103.291Z" fill="url(#nose-gradient)"/>
+            <circle cx="55.5" cy="55.5" r="55.5" fill="#F91F15"/>
+          </g>
+          <defs>
+            <linearGradient id="nose-gradient" x1="55.5" y1="61" x2="55.5" y2="209" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#BC0017"/>
+              <stop offset="0.11" stop-color="#C30416"/>
+              <stop offset="0.28" stop-color="#D90F16"/>
+              <stop offset="0.47" stop-color="#F91F15"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-card-label">Default · Lightmode</span>
+      </div>
+      <div class="logo-card dark">
+        <svg width="140" height="140" viewBox="0 0 768 768" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="620" cy="206" r="74" fill="#ffffff"/>
+          <path d="M755.467 376H621.603C621.603 508.089 515.198 616.262 383.967 616.262C252.735 616.262 146.364 508.089 146.364 376H12.5C12.5 582.518 178.822 751 384 751C589.178 751 755.5 582.518 755.5 376H755.467Z" fill="#ffffff"/>
+          <g transform="translate(328.5, 265)">
+            <path d="M103.291 61H0.5L28.1669 187.361C30.9369 200.287 41.9169 209 55.5 209C69.0831 209 80.0631 200.319 82.8331 187.361L110.5 61H103.291Z" fill="url(#nose-gradient-dark)"/>
+            <circle cx="55.5" cy="55.5" r="55.5" fill="#F91F15"/>
+          </g>
+          <defs>
+            <linearGradient id="nose-gradient-dark" x1="55.5" y1="61" x2="55.5" y2="209" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#BC0017"/>
+              <stop offset="0.11" stop-color="#C30416"/>
+              <stop offset="0.28" stop-color="#D90F16"/>
+              <stop offset="0.47" stop-color="#F91F15"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-card-label">Default · Darkmode</span>
+      </div>
+      <div class="logo-card">
+        <svg width="140" height="140" viewBox="0 0 768 768" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="620" cy="206" r="74" fill="#e0e0e0"/>
+          <path d="M755.467 376H621.603C621.603 508.089 515.198 616.262 383.967 616.262C252.735 616.262 146.364 508.089 146.364 376H12.5C12.5 582.518 178.822 751 384 751C589.178 751 755.5 582.518 755.5 376H755.467Z" fill="#e0e0e0"/>
+          <g transform="translate(328.5, 265)">
+            <path d="M103.291 61H0.5L28.1669 187.361C30.9369 200.287 41.9169 209 55.5 209C69.0831 209 80.0631 200.319 82.8331 187.361L110.5 61H103.291Z" fill="url(#nose-gradient-disabled)"/>
+            <circle cx="55.5" cy="55.5" r="55.5" fill="#F91F15"/>
+          </g>
+          <defs>
+            <linearGradient id="nose-gradient-disabled" x1="55.5" y1="61" x2="55.5" y2="209" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#BC0017"/>
+              <stop offset="0.11" stop-color="#C30416"/>
+              <stop offset="0.28" stop-color="#D90F16"/>
+              <stop offset="0.47" stop-color="#F91F15"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-card-label">Disabled</span>
+      </div>
+    </div>
+
+    <h2>Structure</h2>
+    <div class="logo-structure">
+      <span class="comment">// Img_Logo (768x768px)</span><br>
+      ├── <strong>eye</strong>     <span class="comment">// 우상단 원형 점</span><br>
+      ├── <strong>nose</strong>    <span class="comment">// 중앙 빨간 위치핀 (두 테마 공통)</span><br>
+      └── <strong>mouth</strong>   <span class="comment">// 하단 U자형 아크</span>
+    </div>
+
+    <h2>Color Rules</h2>
+    <table class="logo-color-table">
+      <thead>
+        <tr><th>Part</th><th>Default</th><th>Disabled</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="part">eye (원형 점)</td>
+          <td><code>#292929</code> Gray800</td>
+          <td><code>#e0e0e0</code> Gray300</td>
+        </tr>
+        <tr>
+          <td class="part">nose (위치핀)</td>
+          <td><code>#f91f15</code> Red700</td>
+          <td><code>#f91f15</code> Red700 (동일)</td>
+        </tr>
+        <tr>
+          <td class="part">mouth (U 아크)</td>
+          <td><code>#292929</code> Gray800</td>
+          <td><code>#e0e0e0</code> Gray300</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Variants</h2>
+    <table class="logo-color-table">
+      <thead>
+        <tr><th>Variant</th><th>Component</th><th>Size</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Full Logo · Lightmode</td>
+          <td><code>Img_Global_Full</code></td>
+          <td>840 x 118px</td>
+          <td>스플래시, 마케팅</td>
+        </tr>
+        <tr>
+          <td>Full Logo · Darkmode</td>
+          <td><code>Img_Global_Full</code></td>
+          <td>840 x 118px</td>
+          <td>어두운 배경</td>
+        </tr>
+        <tr>
+          <td>Mini Logo</td>
+          <td><code>Img_Global_Mini</code></td>
+          <td>258 x 36px</td>
+          <td>네비게이션 바</td>
+        </tr>
+        <tr>
+          <td>Icon Mark</td>
+          <td><code>Img_Logo</code></td>
+          <td>768 x 768px</td>
+          <td>앱 아이콘, 스플래시</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== ELEMENT COMPONENT ========== -->
+  <section id="element">
+    <h1>Element Component</h1>
+    <p class="subtitle">앱 전역 재사용 원자·분자 수준 컴포넌트 (459종) · Figma 페이지 4:2661</p>
+
+    <h2>Controls</h2>
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:8px;align-items:center">
+            <div class="demo-icon heart" style="background:var(--red700)"></div>
+            <div class="demo-icon comment"></div>
+            <div class="demo-icon more"></div>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Icon · Icon Toggle</div><div class="component-desc">아이콘 (S/M/mcr/ETC) 및 토글 상태 아이콘</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:8px">
+            <span class="demo-chip active">전체</span>
+            <span class="demo-chip">인기</span>
+            <span class="demo-chip">최신</span>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Chip · Chips</div><div class="component-desc">필터·선택용 칩</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:16px">
+            <div class="demo-checkbox"></div>
+            <div class="demo-checkbox checked"></div>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Check Box</div><div class="component-desc">체크박스</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:16px">
+            <div class="demo-radio"></div>
+            <div class="demo-radio checked"></div>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Radio</div><div class="component-desc">라디오 버튼</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:16px">
+            <div class="demo-toggle"></div>
+            <div class="demo-toggle on"></div>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Toggle</div><div class="component-desc">스위치 토글</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview" style="flex-direction:column;gap:12px;width:100%">
+          <div class="demo-divider"></div>
+          <div class="demo-divider thick"></div>
+        </div>
+        <div class="component-info"><div class="component-name">Divider</div><div class="component-desc">구분선 (1px / 8px thick)</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="demo-tooltip">툴팁 메시지</div>
+        </div>
+        <div class="component-info"><div class="component-name">Tooltip</div><div class="component-desc">툴팁 말풍선</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:8px">
+            <span class="demo-badge">HOT</span>
+            <span class="demo-badge best">BEST</span>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">badge</div><div class="component-desc">인라인 뱃지</div></div>
+      </div>
+    </div>
+
+    <h2>Input</h2>
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-preview">
+          <input type="text" class="demo-input" placeholder="텍스트를 입력하세요">
+        </div>
+        <div class="component-info"><div class="component-name">Input Field · TextField</div><div class="component-desc">단행 텍스트 입력</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <textarea class="demo-input" style="height:60px;resize:none" placeholder="내용을 입력하세요"></textarea>
+        </div>
+        <div class="component-info"><div class="component-name">Text Area</div><div class="component-desc">멀티라인 텍스트 입력</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="demo-search-wrap">
+            <input type="text" class="demo-search" placeholder="검색">
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Search Bar</div><div class="component-desc">검색 입력창</div></div>
+      </div>
+    </div>
+
+    <h2>Navigation</h2>
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="demo-tab-group">
+            <div class="demo-tab active">전체</div>
+            <div class="demo-tab">인기</div>
+            <div class="demo-tab">최신</div>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Tab · Tab Group</div><div class="component-desc">수평 탭 (필터용)</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="demo-handlebar"></div>
+        </div>
+        <div class="component-info"><div class="component-name">Handlebar</div><div class="component-desc">바텀시트 핸들바</div></div>
+      </div>
+    </div>
+
+    <h2>Actions</h2>
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-preview">
+          <div style="display:flex;gap:8px">
+            <button class="demo-btn primary">Primary</button>
+            <button class="demo-btn secondary">Secondary</button>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">Button · Btn</div><div class="component-desc">일반 버튼 (Primary / Secondary 등)</div></div>
+      </div>
+      <div class="component-card">
+        <div class="component-preview">
+          <button class="demo-cta">작성 완료</button>
+        </div>
+        <div class="component-info"><div class="component-name">CTA Button</div><div class="component-desc">전체폭 주요 액션 버튼</div></div>
+      </div>
+    </div>
+
+    <h2>List & Cards</h2>
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="demo-list-item">
+            <div class="demo-list-avatar"></div>
+            <div class="demo-list-content">
+              <div class="demo-list-title">Anonymous</div>
+              <div class="demo-list-sub">15분 전</div>
+            </div>
+          </div>
+        </div>
+        <div class="component-info"><div class="component-name">List · List Item</div><div class="component-desc">범용 리스트 아이템</div></div>
+      </div>
+    </div>
+
+    <h2>Featured Components</h2>
+    <p style="font-size:13px;color:var(--gray600);margin-bottom:24px">피처별 화면 수준 컴포넌트 · Figma 페이지 4:2662</p>
+
+    <div class="featured-domain">
+      <h4>Community</h4>
+      <div class="featured-list">
+        <span class="featured-chip">Community/NavBar</span>
+        <span class="featured-chip">Community/Category</span>
+        <span class="featured-chip">Community/Article</span>
+        <span class="featured-chip">Community/Comment</span>
+        <span class="featured-chip">Community/Profile</span>
+        <span class="featured-chip">Community/ProfileIcon</span>
+        <span class="featured-chip">Community/Posvote</span>
+        <span class="featured-chip">Community/Scrap</span>
+        <span class="featured-chip">Community/WriteComment</span>
+        <span class="featured-chip">Community/FloatingButton</span>
+      </div>
+    </div>
+
+    <div class="featured-domain">
+      <h4>Timetable</h4>
+      <div class="featured-list">
+        <span class="featured-chip">Timetable/Navbar</span>
+        <span class="featured-chip">Timetable/Week</span>
+        <span class="featured-chip">Timetable/Day</span>
+        <span class="featured-chip">Timetable/TimeBlock</span>
+        <span class="featured-chip">Timetable/TimeGuide</span>
+        <span class="featured-chip">Timetable/Indicator</span>
+        <span class="featured-chip">Timetable/FloatingButton</span>
+        <span class="featured-chip">Subject List</span>
+        <span class="featured-chip">Add Event</span>
+        <span class="featured-chip">Add Class</span>
+      </div>
+    </div>
+
+    <div class="featured-domain">
+      <h4>Course Review</h4>
+      <div class="featured-list">
+        <span class="featured-chip">Course Review/Navbar</span>
+        <span class="featured-chip">Course Review/List</span>
+        <span class="featured-chip">Course Review/My Review</span>
+        <span class="featured-chip">Review Page/Filter</span>
+        <span class="featured-chip">Review Page/List</span>
+        <span class="featured-chip">Write Review/Text</span>
+      </div>
+    </div>
+
+    <div class="featured-domain">
+      <h4>Others</h4>
+      <div class="featured-list">
+        <span class="featured-chip">Notification/Alert</span>
+        <span class="featured-chip">ID Card</span>
+        <span class="featured-chip">My Page/Navbar</span>
+        <span class="featured-chip">My Page/List</span>
+        <span class="featured-chip">Univ Select</span>
+        <span class="featured-chip">Code Verification</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+// Section Navigation
+const navTabs = document.querySelectorAll('.nav-tab');
+const sections = document.querySelectorAll('section');
+
+navTabs.forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = tab.dataset.section;
+
+    navTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    sections.forEach(s => s.classList.remove('active'));
+    document.getElementById(target).classList.add('active');
+  });
+});
+
+// Platform Tabs (Typography)
+const platformTabs = document.querySelectorAll('.platform-tab[data-platform]');
+const typePlatforms = document.querySelectorAll('.type-platform');
+
+platformTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const platform = tab.dataset.platform;
+
+    platformTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    typePlatforms.forEach(p => p.classList.remove('active'));
+    document.querySelector(`.type-platform[data-platform="${platform}"]`).classList.add('active');
+  });
+});
+
+// Theme Tabs (Color)
+const themeTabs = document.querySelectorAll('.platform-tab[data-theme]');
+const colorThemes = document.querySelectorAll('.color-theme');
+
+themeTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const theme = tab.dataset.theme;
+
+    themeTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    colorThemes.forEach(ct => ct.classList.remove('active'));
+    document.querySelector(`.color-theme[data-theme="${theme}"]`).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
